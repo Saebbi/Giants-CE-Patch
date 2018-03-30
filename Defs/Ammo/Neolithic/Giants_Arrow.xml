@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingCategoryDef>
+      <defName>AmmoGiantArrows</defName>
+      <label>giant arrows</label>
+      <parent>AmmoNeolithic</parent>
+      <iconPath>UI/Icons/ThingCategories/CaliberArrow</iconPath>
+    </ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_GiantArrow</defName>
+		<label>giant arrows</label>
+		<ammoTypes>
+			<Ammo_GiantArrow>Projectile_GiantArrow</Ammo_GiantArrow>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+  <ThingDef Name="AmmoGiantArrowBase" ParentName="NeolithicAmmoBase" Abstract="True">
+    <description>Giant arrow designed to be fired from a giant bow.</description>
+    <statBases>
+      <Mass>0.17</Mass>
+      <Bulk>0.17</Bulk>
+      <Flammability>1</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>AmmoGiantArrows</li>
+    </thingCategories>
+    <stackLimit>200</stackLimit>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting_FueledSmithy</li>
+      <li>CE_AutoEnableCrafting_ElectricSmithy</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="AmmoGiantArrowBase">
+    <defName>Ammo_GiantArrow</defName>
+    <label>giant arrow</label>
+    <graphicData>
+      <texPath>Things/Ammo/Neolithic/Arrow/Steel</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.52</MarketValue>
+    </statBases>
+		<ammoClass>SteelArrow</ammoClass>
+  </ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="BaseGiantArrowProjectile" ParentName="BaseBullet" Abstract="true">
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Arrow</damageDef>
+			<speed>120</speed>
+		</projectile>
+	</ThingDef>
+	
+	<!-- The amount of arrows usable over the ammo lifetime for each resource cost is equal to
+		[r / (1 - x)];
+			x = preExplosionSpawnChance,
+			r = resource cost. -->
+
+	<ThingDef ParentName="BaseGiantArrowProjectile">
+		<defName>Projectile_GiantArrow</defName>
+		<label>giant arrow</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrows/Arrow_Steel</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageAmountBase>25</damageAmountBase>
+			<armorPenetration>0.75</armorPenetration>
+			<preExplosionSpawnChance>0.6</preExplosionSpawnChance>	<!-- 25 arrows per resource -->
+			<preExplosionSpawnThingDef>Ammo_GiantArrow</preExplosionSpawnThingDef>
+		</projectile>
+	</ThingDef>
+  
+	<!-- ==================== Recipes ========================== -->
+
+  <RecipeDef ParentName="AmmoRecipeNeolithicBase">
+    <defName>MakeAmmo_GiantArrow_Steel</defName>
+    <label>make steel giant arrows x10</label>
+    <description>Craft 10 steel giant arrows.</description>
+    <jobString>Making steel giant arrows.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>WoodLog</li>
+          </thingDefs>
+        </filter>
+        <count>2</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>WoodLog</li>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_GiantArrow>10</Ammo_GiantArrow>
+    </products>
+  </RecipeDef>
+	
+</Defs>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+    <defName>Giants_LongBow</defName>
+    <statBases>
+      <SightsEfficiency>0.8</SightsEfficiency>
+      <ShotSpread>1</ShotSpread>
+      <SwayFactor>2</SwayFactor>
+      <Bulk>5.00</Bulk>
+      <RangedWeapon_Cooldown>1.66</RangedWeapon_Cooldown>
+    </statBases>
+    <Properties>
+      <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+      <hasStandardCommand>true</hasStandardCommand>
+      <defaultProjectile>Projectile_GiantArrow</defaultProjectile>
+      <warmupTime>1.35</warmupTime>
+      <range>30</range>
+      <soundCast>BowSmall</soundCast>
+    </Properties>
+    <AmmoUser>
+      <ammoSet>AmmoSet_GiantArrow</ammoSet>
+    </AmmoUser>
+    <FireModes />
+    <weaponTags>
+      <li>GiantRanged</li>
+    </weaponTags>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>*/ThingDef[defName="Bow_Great"]/tools</xpath>
+    <value>
+      <tools>
+        <li Class="CombatExtended.ToolCE">
+		  <label>shaft</label>
+          <capacities>
+            <li>Blunt</li>
+          </capacities>
+          <power>10</power>
+          <cooldownTime>1.8</cooldownTime>
+          <armorPenetration>0.102</armorPenetration>
+        </li>
+      </tools>
+    </value>
+  </Operation>
+  
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/ThingDef[defName="Viking_BattleAxe"]/tools</xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>head</label>
+					<labelUsedInLogging>false</labelUsedInLogging>
+					<capacities>
+						<li>Cut</li>
+					</capacities>
+					<power>60</power>
+					<cooldownTime>4</cooldownTime>
+					<armorPenetration>0.9</armorPenetration>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Viking_BattleAxe"]/statBases</xpath>
+		<value>
+      		<Bulk>5.5</Bulk>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Viking_BattleAxe"]</xpath>
+		<value>
+			<equippedStatOffsets>
+				<MeleeCritChance>0.75</MeleeCritChance>
+				<MeleeParryChance>0.35</MeleeParryChance>
+			</equippedStatOffsets>
+		</value>
+	</Operation>
+  
+  
+  
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/ThingDef[defName="Giants_Spear"]/tools</xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>point</label>
+					<capacities>
+						<li>Stab</li>
+					</capacities>
+					<power>55</power>
+					<cooldownTime>2.3</cooldownTime>
+					<armorPenetration>0.8</armorPenetration>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Giants_Spear"]/statBases</xpath>
+		<value>
+      		<Bulk>6.5</Bulk>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Giants_Spear"]</xpath>
+		<value>
+			<equippedStatOffsets>
+				<MeleeCritChance>0.55</MeleeCritChance>
+				<MeleeParryChance>0.25</MeleeParryChance>
+				<MeleeDodgeChance>0.17</MeleeDodgeChance>
+			</equippedStatOffsets>
+		</value>
+	</Operation>  
+  
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/ThingDef[defName="Viking_Axe"]/tools</xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>edge</label>
+					<capacities>
+						<li>Cut</li>
+					</capacities>
+					<power>38</power>
+					<cooldownTime>1.9</cooldownTime>
+					<armorPenetration>0.75</armorPenetration>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Viking_Axe"]/statBases</xpath>
+		<value>
+      		<Bulk>5.5</Bulk>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Viking_Axe"]</xpath>
+		<value>
+			<equippedStatOffsets>
+				<MeleeCritChance>0.6</MeleeCritChance>
+				<MeleeParryChance>0.45</MeleeParryChance>
+			</equippedStatOffsets>
+		</value>
+	</Operation>
+  
+</Patch>
