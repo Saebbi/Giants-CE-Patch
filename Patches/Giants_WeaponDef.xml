@@ -28,7 +28,7 @@
   </Operation>
 
   <Operation Class="PatchOperationReplace">
-    <xpath>*/ThingDef[defName="Bow_Great"]/tools</xpath>
+    <xpath>*/ThingDef[defName="Giants_LongBow"]/tools</xpath>
     <value>
       <tools>
         <li Class="CombatExtended.ToolCE">
